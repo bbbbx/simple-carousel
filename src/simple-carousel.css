@@ -1,0 +1,48 @@
+.carousel .buttons {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  height: 20px;
+  z-index: 2;
+}
+
+.carousel .buttons span {
+  margin: 3px;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+  cursor: pointer;
+}
+
+.carousel .buttons span.on {
+  background-color: white;
+}
+
+.carousel .arrow {
+  position: absolute;
+  text-decoration: none;
+  top: 45%;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0 14px;
+  font-size: 50px;
+  z-index: 2;
+  display: none;
+}
+.carousel .arrow-left {
+  left: 10px;
+}
+.carousel .arrow-right {
+  right: 10px;
+}
+.carousel:hover .arrow {
+  display: block;
+}
+.carousel .arrow:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
