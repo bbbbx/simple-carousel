@@ -1,6 +1,6 @@
 # simple-carousel
 
-🎠 Just a simple carousel component. [Live demo](http://venusworld.cn/simple-carousel/)
+🎠 Just a simple carousel component. [Live demo](https://bbbbx.github.io/simple-carousel/)
 
 ## Usage
 
