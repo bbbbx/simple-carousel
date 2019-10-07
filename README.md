@@ -70,6 +70,10 @@ Frame width, unit is px, default is 600px.
 
 Frame height, unit is px, default is 400px.
 
+**option.borderRadius**
+
+Frame corner/border Radius, unit is px, default is 0px.
+
 For example:
 ```js
 window.simpleCarousel.build(carousel, {

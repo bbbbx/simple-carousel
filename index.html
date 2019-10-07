@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +9,27 @@
   <link rel="stylesheet" href="./src/simple-carousel.css" />
   <style>
     .btn {
-        display: block;
-        width: 200px;
-        margin: 10px auto;
-        text-align: center;
-        text-decoration: none;
-        height: 50px;
-        line-height: 50px;
-        font-size: 1.4em;
-        border-radius: .3em;
-      }
-      .btn-red {
-        background: red;
-        color: white;
-      }
-    </style>
+      display: block;
+      width: 200px;
+      margin: 10px auto;
+      text-align: center;
+      text-decoration: none;
+      height: 50px;
+      line-height: 50px;
+      font-size: 1.4em;
+      border-radius: .3em;
+    }
+
+    .btn-red {
+      background: red;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
   <div align="center">
-    <h1>A simple 🎠 carousel component<br/> NO dependencies</h1>
+    <h1>A simple 🎠 carousel component<br /> NO dependencies</h1>
     <a href="https://github.com/bbbbx/simple-carousel" class="btn btn-red">Github Repo</a>
     <h2>Carousel 1(default)</h2>
     <div id="carousel1">
@@ -60,7 +63,7 @@
   </div>
   <script src="./src/simple-carousel.js"></script>
   <script>
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       var carousel1 = document.querySelector('#carousel1');
       var carousel2 = document.querySelector('#carousel2');
       window.simpleCarousel.build(carousel1);
@@ -68,10 +71,12 @@
         autoplay: true,
         slidetime: 1000,
         width: '800px',
-        height: '600px'
+        height: '600px',
+        borderRadius: '20px'
       });
-      
+
     })
   </script>
 </body>
+
 </html>
