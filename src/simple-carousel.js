@@ -1,4 +1,4 @@
-(function() {
+(function () {
   var simpleCarousel = {};
   window.simpleCarousel = simpleCarousel;  // export simpleCarousel
 
@@ -7,7 +7,7 @@
    * @param {Node} carousel
    * @param {Object} option 
    */
-  simpleCarousel.build = function(carousel, option) {
+  simpleCarousel.build = function (carousel, option) {
 
     // start option default value
     option = option || {};
@@ -16,6 +16,7 @@
     option.interval = option.interval || 3000;   // image slide interval time
     option.width = option.width || '600px';      // frame widht
     option.height = option.height || '400px';    // frame height
+    option.borderRadius = option.borderRadius || '0px';    // frame corner radius
     if (option.slidetime > option.interval) {
       option.slidetime = option.interval;
       console.warn('option.slidetime must be less than option.interval!');
@@ -40,6 +41,7 @@
     var timer;             // image
 
     carousel.classList.add('carousel');
+    carousel.style.borderRadius = option.borderRadius;
     carousel.style.position = 'relative';
     carousel.style.overflow = 'hidden'
     carousel.style.margin = 0;
@@ -49,14 +51,14 @@
     list.style.position = 'absolute';
     list.style.left = -width + 'px';
     list.style.height = height + 'px';
-    list.style.width = width * (length+2)  + 'px';
+    list.style.width = width * (length + 2) + 'px';
     list.style.zIndex = 1;
     list.style.overflow = 'hidden';
     list.style.margin = 0;
     list.style.padding = 0;
 
-    firstImg.src = list.children[list.children.length-1].children[0].src;
-    firstImg.alt = list.children[list.children.length-1].children[0].alt;
+    firstImg.src = list.children[list.children.length - 1].children[0].src;
+    firstImg.alt = list.children[list.children.length - 1].children[0].alt;
     lastImg.src = list.children[0].children[0].src;
     lastImg.alt = list.children[0].children[0].alt;
     firstLi.appendChild(firstImg);
@@ -96,13 +98,13 @@
       list.children[i].children[0].style.margin = '0 auto';
     }
 
-//--------------//--------------//--------------//--------------//--------------//--------------//--------------
+    //--------------//--------------//--------------//--------------//--------------//--------------//--------------
 
     function showButton() {
       for (var i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove('on');
       }
-      buttons[index-1].classList.add('on');
+      buttons[index - 1].classList.add('on');
     }
 
     function animate(offset) {
@@ -110,22 +112,22 @@
       var newLeft = Number.parseInt(list.style.left) + offset;
       var time = option.slidetime;  // 位移总时间
       var interval = 10;  // 位移间隔时间
-      var speed = offset/(time/interval);  // 每次位移量，负表示向右移。正表示向左移
-      
-      var timer = setInterval(function() {
+      var speed = offset / (time / interval);  // 每次位移量，负表示向右移。正表示向左移
+
+      var timer = setInterval(function () {
         list.style.left = Number.parseInt(list.style.left) + speed + 'px';
         if (Number.parseInt(list.style.left) === newLeft) {  // JS 动画位移完成
           animated = false;  // 设置动画结束标志位
           clearInterval(timer);  // 清除 setInterval
 
-          list.style.left = newLeft > -width               ? buttons.length*-width + 'px': list.style.left;
-          list.style.left = newLeft < buttons.length*-width? -width + 'px'               : list.style.left;
+          list.style.left = newLeft > -width ? buttons.length * -width + 'px' : list.style.left;
+          list.style.left = newLeft < buttons.length * -width ? -width + 'px' : list.style.left;
         }
       }, interval);
     }
 
     function autoPlay() {
-      timer = setInterval(function() {
+      timer = setInterval(function () {
         next.click();
       }, option.interval);
     }
@@ -133,30 +135,30 @@
     function stopPlay() {
       clearInterval(timer);
     }
-    
+
     // 点击下一张图片
-    next.addEventListener('click', function() {
+    next.addEventListener('click', function () {
       if (!animated) {
-        index = index === buttons.length? 1: index+1;  // index 是否等于 buttons.length-1 
+        index = index === buttons.length ? 1 : index + 1;  // index 是否等于 buttons.length-1 
         showButton();
         animate(-width);
       }
     });
     // 点击上一张图片
-    prev.addEventListener('click', function() {
+    prev.addEventListener('click', function () {
       if (!animated) {
-        index = index === 1? buttons.length: index-1;
+        index = index === 1 ? buttons.length : index - 1;
         showButton();
         animate(width);
       }
     });
     // 点击底下按钮
-    buttonContainer.addEventListener('click', function(e) {
-      if (e.target.tagName.toLowerCase() !== 'span') return ; // 点击的不是 <span />
+    buttonContainer.addEventListener('click', function (e) {
+      if (e.target.tagName.toLowerCase() !== 'span') return; // 点击的不是 <span />
 
-      if (!animated) { 
+      if (!animated) {
         var eIndex = Number.parseInt(e.target.dataset.index);
-        if (eIndex === index) return ;  // 无需改变 left
+        if (eIndex === index) return;  // 无需改变 left
         var offset = (eIndex - index) * -width;
         animate(offset);
         index = eIndex;
@@ -166,10 +168,10 @@
 
     showButton();
     if (option.autoplay) {
-      carousel.addEventListener('mouseover', function() {
+      carousel.addEventListener('mouseover', function () {
         stopPlay();
       });
-      carousel.addEventListener('mouseout', function() {
+      carousel.addEventListener('mouseout', function () {
         autoPlay();
       });
       autoPlay();
